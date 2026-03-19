@@ -65,7 +65,7 @@ jobs:
 
       - name: Update Homebrew Cask
         run: |
-          CASK_FILE="Homebrew/Casks/system-status.rb"
+          CASK_FILE="Casks/system-status.rb"
           VERSION="${{ steps.info.outputs.version }}"
           SHA256="${{ steps.info.outputs.sha256 }}"
           
