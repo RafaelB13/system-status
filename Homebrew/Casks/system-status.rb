@@ -1,6 +1,6 @@
 cask "system-status" do
   version "1.0.0"
-  sha256 :no_check
+  sha256 "4e77bceee7fb62a24d1afad778eada6995c970c9f52560ddbc88661e077ff088"
 
   url "https://github.com/RafaelB13/system-status/releases/download/v#{version}/System-Status-#{version}.dmg"
   name "System Status"
