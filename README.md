@@ -1,25 +1,33 @@
 # System Status (macOS Menu Bar)
 
-A lightweight macOS system tray application built with Electron and TypeScript to monitor real-time CPU, RAM, and Battery Temperature directly from your menu bar.
+A lightweight and professional macOS system tray application built with Electron and TypeScript to monitor real-time system performance directly from your menu bar.
 
 ![App Icon](icon.icns)
 
-## Features
+## 🚀 Features
 
-- **Real-time CPU Usage:** Monitor processor load percentage.
-- **Accurate RAM Monitoring:** Displays used memory excluding macOS system cache (Wired + Active + Compressed) for a realistic view of available resources.
-- **Hidden Battery Temperature:** View the machine's temperature (via battery sensor) by clicking the menu bar icon.
-- **Native Experience:** Runs exclusively in the menu bar; dock icon is hidden.
-- **Security:** No root/sudo permissions required.
+- **Real-time Menu Bar Stats:**
+  - 💻 **CPU Usage:** Monitor processor load percentage.
+  - 📊 **RAM Monitoring:** Accurate usage excluding macOS system cache (Wired + Active + Compressed).
+- **Advanced Context Menu (Right-click):**
+  - 💾 **Disk Free:** Quick view of available space on your root partition.
+  - ⏱️ **System Uptime:** See how long your Mac has been running (e.g., `2d 5h 30m`).
+  - 🌡️ **Battery Temperature:** Reliable proxy for system heat without requiring root access.
+- **Native Experience:** Runs exclusively in the menu bar with a hidden dock icon.
+- **Modern UI:** Clean icons (emojis) and professional spacing for quick readability.
+- **Zero Root Privileges:** Uses standard system APIs only—no `sudo` required.
 
-## Prerequisites
+## 🏗️ Architecture
 
-- [Node.js](https://nodejs.org/) (v16 or higher)
-- [npm](https://www.npmjs.com/)
+The project follows **Clean Architecture** principles to ensure maintainability and testability:
+- **Domain:** Pure business logic and interfaces (Ports).
+- **Application:** Use Cases that orchestrate the flow of data.
+- **Infrastructure:** Concrete implementations (Adapters) for macOS sensors, Electron UI, and system commands.
+- **Import Aliases:** Uses `@domain/*`, `@application/*`, and `@infrastructure/*` for clean imports.
 
-## Installation & Development
+## 🛠️ Installation & Development
 
-1. **Clone or navigate to the project folder:**
+1. **Clone the repository:**
    ```bash
    cd system-status
    ```
@@ -34,7 +42,7 @@ A lightweight macOS system tray application built with Electron and TypeScript t
    npm start
    ```
 
-## Building the Executable
+## 📦 Building the Executable
 
 To generate a standalone macOS application (`.app`) and a disk image (`.dmg`) with the custom icon:
 
@@ -42,14 +50,8 @@ To generate a standalone macOS application (`.app`) and a disk image (`.dmg`) wi
 npm run dist
 ```
 
-The output will be located in the `release/` directory.
+The final installer will be located in the `release/` directory.
 
-## How it Works
-
-- **CPU:** Uses `os-utils` to calculate load over a 2-second interval.
-- **RAM:** Executes the native `vm_stat` command to parse memory pages accurately, ensuring cached data is treated as freeable space.
-- **Temperature:** Utilizes `ioreg` to fetch battery temperature as a reliable proxy for system heat without requiring administrative privileges.
-
-## License
+## 📝 License
 
 ISC
