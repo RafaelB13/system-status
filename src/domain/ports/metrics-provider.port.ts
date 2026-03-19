@@ -13,3 +13,11 @@ export interface MemoryMetricsProvider {
 export interface TemperatureMetricsProvider {
   getTemperature(): Promise<string>;
 }
+
+export interface DiskMetricsProvider {
+  getDiskFree(): Promise<string>;
+}
+
+export interface UptimeMetricsProvider {
+  getUptime(): string;
+}

@@ -4,6 +4,8 @@ import { app } from 'electron';
 import { CpuUsageAdapter } from '@infrastructure/adapters/cpu-usage.adapter';
 import { MacOsMemoryAdapter } from '@infrastructure/adapters/macos-memory.adapter';
 import { MacOsTemperatureAdapter } from '@infrastructure/adapters/macos-temperature.adapter';
+import { MacOsDiskAdapter } from '@infrastructure/adapters/macos-disk.adapter';
+import { OsUptimeAdapter } from '@infrastructure/adapters/os-uptime.adapter';
 import { ElectronTrayAdapter } from '@infrastructure/adapters/electron-tray.adapter';
 
 // Use Case (application)
@@ -20,6 +22,8 @@ const REFRESH_INTERVAL_MS = 2000;
 const cpuProvider = new CpuUsageAdapter();
 const memoryProvider = new MacOsMemoryAdapter();
 const temperatureProvider = new MacOsTemperatureAdapter();
+const diskProvider = new MacOsDiskAdapter();
+const uptimeProvider = new OsUptimeAdapter();
 const display = new ElectronTrayAdapter();
 
 // Inject adapters into the use case
@@ -27,6 +31,8 @@ const monitor = new MonitorSystemUseCase(
   cpuProvider,
   memoryProvider,
   temperatureProvider,
+  diskProvider,
+  uptimeProvider,
   display,
 );
 

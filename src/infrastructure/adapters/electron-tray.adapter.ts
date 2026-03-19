@@ -27,15 +27,19 @@ export class ElectronTrayAdapter implements MetricsDisplay {
   update(metrics: SystemMetrics): void {
     if (!this.tray) return;
 
+    // Improved separation with special character and extra spaces
     this.tray.setTitle(
-      `CPU: ${metrics.cpuUsagePercent} | RAM: ${metrics.memoryUsagePercent}`,
+      `💻 ${metrics.cpuUsagePercent}%  │  📊 ${metrics.memoryUsagePercent}`,
     );
 
     const contextMenu = Menu.buildFromTemplate([
-      { label: 'System Status', enabled: false },
+      { label: '📊 System Status', enabled: false },
+      { type: 'separator' },
+      { label: `💾 Disk Free: ${metrics.diskFree}`, enabled: false },
+      { label: `⏱️ Uptime: ${metrics.uptime}`, enabled: false },
       { type: 'separator' },
       {
-        label: `Battery Temperature: ${metrics.batteryTemperature}°C`,
+        label: `🌡️ Battery Temperature: ${metrics.batteryTemperature}°C`,
         enabled: false,
       },
       { type: 'separator' },
