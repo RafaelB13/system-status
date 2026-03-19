@@ -29,6 +29,14 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RafaelB13/system-status.git"
+  },
+  "bugs": {
+    "url": "https://github.com/RafaelB13/system-status/issues"
+  },
+  "homepage": "https://github.com/RafaelB13/system-status#readme",
   "type": "commonjs",
   "dependencies": {
     "os-utils": "^0.0.14"

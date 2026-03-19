@@ -42,7 +42,9 @@ The project follows **Clean Architecture** principles to ensure maintainability 
    npm start
    ```
 
-## 📦 Building the Executable
+## 📦 Installation
+
+### Standard (Manual)
 
 To generate a standalone macOS application (`.app`) and a disk image (`.dmg`) with the custom icon:
 
@@ -51,6 +53,18 @@ npm run dist
 ```
 
 The final installer will be located in the `release/` directory.
+
+### Homebrew (Recommended)
+
+You can install System Status directly via Homebrew:
+
+```bash
+# Add the tap
+brew tap RafaelB13/system-status https://github.com/RafaelB13/system-status
+
+# Install the application
+brew install --cask system-status
+```
 
 ## 📝 License
 
