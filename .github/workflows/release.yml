@@ -33,21 +33,19 @@ jobs:
       - name: Get Release File Info
         id: info
         run: |
-          # Extraindo versão (removendo o 'v' inicial)
           VERSION=$(echo ${{ github.ref_name }} | sed 's/^v//')
           
-          # O electron-builder por padrão gera: Product-Name-Version.dmg
-          # Espaços no productName são convertidos em '-'
-          FILENAME="System-Status-${VERSION}.dmg"
-          FILEPATH="release/${FILENAME}"
+          # Encontrar o primeiro .dmg na pasta release/
+          # Usando find para ser resiliente a nomes com espaços ou sufixos
+          FILEPATH=$(find release -maxdepth 1 -name "*.dmg" -print -quit)
           
-          if [ ! -f "$FILEPATH" ]; then
-            echo "Error: File $FILEPATH not found."
-            # List files to debug if needed
+          if [ -z "$FILEPATH" ]; then
+            echo "Error: No .dmg file found in release/ folder."
             ls -R release/
             exit 1
           fi
           
+          FILENAME=$(basename "$FILEPATH")
           SHA256=$(shasum -a 256 "$FILEPATH" | awk '{print $1}')
           
           echo "version=${VERSION}" >> $GITHUB_OUTPUT

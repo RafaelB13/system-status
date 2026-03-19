@@ -17,6 +17,7 @@
     "mac": {
       "category": "public.app-category.utilities",
       "target": "dmg",
+      "artifactName": "System-Status-${version}.${ext}",
       "icon": "icon.icns",
       "hardenedRuntime": true,
       "gatekeeperAssess": false
